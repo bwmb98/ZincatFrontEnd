@@ -24,13 +24,20 @@ export class LoginComponent implements OnInit {
   loginUser(){
     this._service.logInUserFromRemote(this.user).subscribe(
       data=>{
-                console.log("response received");
-                this._router.navigate(['/product-list'])
-            },
-      error=>{
-                console.log("exception occured");
-                this.message = "Bad Credentials"
+                const statusCode = data.statusCode;
+                if(statusCode == 401){
+                  this.message = "Bad Credentials";
+                }
+            else{
+              //this.userexist=true;
+              //alert("User already exist");
+              this._router.navigate(['/product-list'])
             }
+            console.log(data);
+      // error=>{
+      //           console.log("exception occured");
+      //           this.message = "Bad Credentials"
+          },
     )
   }
   goRegistration(){
