@@ -34,10 +34,7 @@ export class LoginComponent implements OnInit {
               this._router.navigate(['/product-list'])
             }
             console.log(data);
-      // error=>{
-      //           console.log("exception occured");
-      //           this.message = "Bad Credentials"
-          },
+            },
     )
   }
   goRegistration(){
